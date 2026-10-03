@@ -1,0 +1,96 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap");
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: #ffffff;
+  color: #0b1f3a;
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+section[id] {
+  scroll-margin-top: 76px;
+}
+:focus-visible {
+  outline: 2px solid #16a6b6;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+/* ECG continuous scroll */
+@keyframes ecg-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ecg-scroll {
+  animation: ecg-scroll 7s linear infinite;
+  will-change: transform;
+}
+.ecg-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+.ecg-glow { filter: drop-shadow(0 0 3px rgba(22, 166, 182, 0.55)); }
+.ecg-glow-red { filter: drop-shadow(0 0 3px rgba(230, 57, 70, 0.5)); }
+.ecg-glow-blue { filter: drop-shadow(0 0 3px rgba(23, 105, 170, 0.5)); }
+/* Heartbeat (lub-dub) */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(1.05); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.03); }
+  45% { transform: scale(1); }
+}
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.85); opacity: 0.5; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.pulse-ring {
+  animation: pulse-ring 3s ease-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes soft-ping {
+  0% { transform: scale(1); opacity: 0.55; }
+  80%, 100% { transform: scale(2.1); opacity: 0; }
+}
+.soft-ping {
+  animation: soft-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(11, 31, 58, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11, 31, 58, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.bg-grid-dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
